@@ -7,7 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
+        // MCPChain Brand Colors
+        'mcp': {
+          'cyan': '#00f5ff',      // Electric cyan - primary accent
+          'cyan-dark': '#00d4e6', // Darker cyan for hover states
+          'cyan-light': '#4df8ff', // Lighter cyan for subtle accents
+          'navy': '#0a0e1a',      // Deep navy background
+          'slate': '#1a1f2e',     // Lighter navy for cards
+          'steel': '#2a3441',     // Steel for borders
+          'silver': '#9ca3af',    // Silver for text
+          'white': '#ffffff',     // Pure white for contrast
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -53,6 +68,30 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        "glow-pulse": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px rgba(0, 245, 255, 0.3)",
+            transform: "scale(1)"
+          },
+          "50%": { 
+            boxShadow: "0 0 40px rgba(0, 245, 255, 0.6)",
+            transform: "scale(1.02)"
+          },
+        },
+        "electric-glow": {
+          "0%, 100%": { 
+            textShadow: "0 0 10px rgba(0, 245, 255, 0.5)"
+          },
+          "50%": { 
+            textShadow: "0 0 20px rgba(0, 245, 255, 0.8), 0 0 30px rgba(0, 245, 255, 0.4)"
+          },
+        },
+      },
+      animation: {
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "electric-glow": "electric-glow 2s ease-in-out infinite",
       },
     },
   },
