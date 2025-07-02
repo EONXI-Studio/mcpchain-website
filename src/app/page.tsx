@@ -2,11 +2,7 @@
 
 import { motion } from "framer-motion"
 import { 
-  ShieldCheckIcon, 
-  BoltIcon, 
-  ChartBarIcon,
   RocketLaunchIcon,
-  CpuChipIcon,
   LinkIcon,
   CheckCircleIcon,
   ClockIcon
@@ -16,6 +12,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { VideoPlayer } from "@/components/VideoPlayer"
+import BeforeAfterDiagram from "@/components/BeforeAfterDiagram"
+import EcosystemDiagram from "@/components/EcosystemDiagram"
+import ShieldMetaphor from "@/components/ShieldMetaphor"
+import { 
+  ShieldSecurityIcon,
+  VerifiedShieldIcon,
+  NetworkShieldIcon,
+  AuditShieldIcon,
+  RegistryShieldIcon,
+  WarningIcon,
+  SuccessIcon,
+  AIAgentIcon,
+  BlockchainIcon,
+  ToolIcon,
+  LightningIcon,
+  BrokenChainIcon,
+  CrackedShieldIcon,
+  GlowingKeyIcon,
+  BlackBoxIcon,
+  DataOracleIcon,
+  GovernanceIcon,
+  GamingNFTIcon,
+  EnterpriseIcon,
+  CloudDataIcon,
+  DataStreamViz
+} from "@/components/ui/icons"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -31,247 +53,309 @@ const staggerContainer = {
   }
 }
 
+// Ecosystem-agnostic configuration for easy customization
+const ecosystemConfig = {
+  // Default: General Web3
+  title: "Powering the Next Wave of Autonomous Applications",
+  subtitle: "MCPChain is horizontal infrastructure that enables verifiable AI agents across every industry and use case",
+  // For Avalanche grants, simply change to:
+  // title: "Powering the Next Wave of Autonomous Applications on Avalanche",
+  // subtitle: "MCPChain brings verifiable AI agents to the Avalanche ecosystem across DeFi, gaming, and enterprise applications",
+}
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <div className="min-h-screen bg-mcp-navy grid-background relative">
       {/* Navigation */}
       <motion.nav 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800"
+        className="sticky top-0 z-50 glass-card"
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-white">
-              MCP<span className="text-purple-400">Chain</span>
+            <div className="text-2xl font-display font-bold text-mcp-white">
+              MCP<span className="text-electric animate-electric-glow">Chain</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-200">About</a>
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors duration-200">Features</a>
-              <a href="#roadmap" className="text-gray-300 hover:text-white transition-colors duration-200">Roadmap</a>
-              <a href="#coming-soon" className="text-gray-300 hover:text-white transition-colors duration-200">Coming Soon</a>
+              <a href="#about" className="text-mcp-silver hover:text-electric transition-colors duration-200 font-medium">About</a>
+              <a href="#features" className="text-mcp-silver hover:text-electric transition-colors duration-200 font-medium">Features</a>
+              <a href="#roadmap" className="text-mcp-silver hover:text-electric transition-colors duration-200 font-medium">Roadmap</a>
+              <a href="#coming-soon" className="text-mcp-silver hover:text-electric transition-colors duration-200 font-medium">Coming Soon</a>
             </div>
           </div>
         </div>
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-24 text-center">
+      <section className="container mx-auto px-6 py-24 text-center relative overflow-hidden">
         <motion.div 
-          className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto relative z-10"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp} className="mb-8">
-            <Badge variant="outline" className="mb-4 text-purple-400 border-purple-400/50">
+            <Badge variant="outline" className="mb-4 text-electric border-electric/50 bg-electric/10 glass-card">
               🚀 Decentralized AI Tool Registry
             </Badge>
           </motion.div>
           
           <motion.h1 
             variants={fadeInUp}
-            className="text-6xl md:text-8xl font-bold text-white mb-8 leading-tight"
+            className="text-6xl md:text-8xl font-display font-bold text-mcp-white mb-8 leading-tight"
           >
-            On-Chain AI Tool
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600">
-              {" "}Registry
+            Your AI is a Black Box.
+            <span className="text-electric animate-electric-glow">
+              {" "}We Give You the Keys.
             </span>
           </motion.h1>
           
           <motion.p 
             variants={fadeInUp}
-            className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto"
+            className="text-xl md:text-2xl text-mcp-silver mb-12 leading-relaxed max-w-4xl mx-auto"
           >
-            A decentralized registry where AI agents can discover, register, and execute tools securely. 
-            MCPChain brings transparency, verifiability, and trust to AI agent interactions through 
-            blockchain technology.
+            MCPChain is the verifiable execution layer that transforms risky AI actions into 
+            provably secure, auditable transactions. The foundational trust layer for the autonomous economy.
           </motion.p>
           
           <motion.div 
             variants={fadeInUp}
             className="flex flex-col items-center gap-8"
           >
-                        {/* Video Demo */}
+            {/* Dynamic Demo Visualization */}
             <div className="relative w-full max-w-4xl mx-auto">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-900/50 border border-slate-700">
+              <div className="relative aspect-video rounded-2xl overflow-hidden glass-card-hover pulse-glow">
                 <VideoPlayer 
                   src="/demo-video.mp4"
                   className="w-full h-full"
                 />
+                {/* Live Data Overlay */}
+                {/* <div className="absolute inset-4 pointer-events-none">
+                  <div className="glass-card p-3 rounded-lg mb-4">
+                    <div className="flex items-center justify-between text-xs">
+                      <div className="flex items-center space-x-2 text-electric">
+                        <div className="w-2 h-2 bg-electric rounded-full animate-pulse"></div>
+                        <span className="data-stream font-mono">MCPChain Network Status: ACTIVE</span>
+                      </div>
+                      <div className="text-mcp-silver font-mono">
+                        Block Height: 2,847,392
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 right-0">
+                    <DataStreamViz />
+                  </div>
+                  
+                  <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
+                    <div className="glass-card p-4 rounded-lg">
+                      <div className="text-xs text-mcp-silver mb-2">Real-time Metrics</div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-xs">
+                          <span className="text-mcp-silver">Tools Verified:</span>
+                          <span className="text-electric font-mono">1,247</span>
+                        </div>
+                        <div className="flex justify-between text-xs">
+                          <span className="text-mcp-silver">Active Agents:</span>
+                          <span className="text-electric font-mono">3,891</span>
+                        </div>
+                        <div className="flex justify-between text-xs">
+                          <span className="text-mcp-silver">Success Rate:</span>
+                          <span className="text-green-400 font-mono">99.7%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> */}
               </div>
-              <p className="text-center text-gray-400 mt-4">Watch MCPChain in Action</p>
+              {/* <p className="text-center text-mcp-silver mt-4">
+                Live MCPChain Network Dashboard - 
+                <span className="text-electric">Real Verifications in Progress</span>
+              </p> */}
             </div>
             
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-6 text-lg"
-              onClick={() => window.open('https://github.com/EONXI-Studio/MCPChain', '_blank')}
-            >
-              <LinkIcon className="w-5 h-5 mr-2" />
-              View on GitHub
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                className="btn-premium text-lg px-8 py-6 text-mcp-navy font-bold"
+                onClick={() => window.open('https://github.com/EONXI-Studio/MCPChain', '_blank')}
+              >
+                <LinkIcon className="w-5 h-5 mr-2" />
+                View on GitHub
+              </Button>
+            </motion.div>
           </motion.div>
         </motion.div>
       </section>
 
       {/* Stats Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="container mx-auto px-6 py-16"
-      >
-        <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-                     <Card className="bg-slate-900/50 border-slate-800 text-center">
-             <CardContent className="p-6">
-               <div className="text-3xl font-bold text-purple-400 mb-2">MCP</div>
-               <div className="text-gray-300">Protocol Integration</div>
-             </CardContent>
-           </Card>
-           <Card className="bg-slate-900/50 border-slate-800 text-center">
-             <CardContent className="p-6">
-               <div className="text-3xl font-bold text-blue-400 mb-2">Web3</div>
-               <div className="text-gray-300">Native Architecture</div>
-             </CardContent>
-           </Card>
-           <Card className="bg-slate-900/50 border-slate-800 text-center">
-             <CardContent className="p-6">
-               <div className="text-3xl font-bold text-green-400 mb-2">AI</div>
-               <div className="text-gray-300">Agent Coordination</div>
-             </CardContent>
-           </Card>
-           <Card className="bg-slate-900/50 border-slate-800 text-center">
-             <CardContent className="p-6">
-               <div className="text-3xl font-bold text-pink-400 mb-2">Trust</div>
-               <div className="text-gray-300">Registry System</div>
-             </CardContent>
-           </Card>
-        </div>
-      </motion.section>
-
-      {/* About Section */}
-      <section id="about" className="container mx-auto px-6 py-24">
+      {/* <section className="container mx-auto px-6 py-16">
         <motion.div 
-          className="max-w-7xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-4 gap-8"
+          initial="initial"
+          whileInView="animate"
           viewport={{ once: true }}
+          variants={staggerContainer}
         >
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-6">
-              What is MCPChain?
-            </h2>
-                         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-               The future of AI agent coordination through decentralized infrastructure
-             </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {[
+            { label: "Tools Registered", value: "1,247", icon: "🛠️" },
+            { label: "AI Agents Active", value: "3,891", icon: "🤖" },
+            { label: "Verifications Daily", value: "28.7K", icon: "✅" },
+            { label: "Total Value Secured", value: "$2.4M", icon: "🔒" }
+          ].map((stat, index) => (
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              key={index}
+              variants={fadeInUp}
+              className="glass-card-hover rounded-2xl p-8 text-center group"
             >
-              <h3 className="text-3xl font-semibold text-white mb-6">
-                Revolutionizing AI Agent Interactions
-              </h3>
-                             <p className="text-gray-300 mb-6 leading-relaxed text-lg">
-                 MCPChain is a decentralized registry where AI agents can discover, register, and execute tools 
-                 in a trustless environment. Think of it as an "app store" for AI agents, but powered by 
-                 blockchain technology for complete transparency and security.
-               </p>
-               <p className="text-gray-300 leading-relaxed text-lg mb-8">
-                 Every tool interaction is recorded on-chain, creating an immutable audit trail. This enables 
-                 AI agents to work together reliably while maintaining full accountability and trust.
-               </p>
-              
-              <div className="space-y-4">
-                                 <div className="flex items-center space-x-3">
-                   <CheckCircleIcon className="w-6 h-6 text-green-400" />
-                   <span className="text-white text-lg">Blockchain Agnostic Design</span>
-                 </div>
-                 <div className="flex items-center space-x-3">
-                   <CheckCircleIcon className="w-6 h-6 text-blue-400" />
-                   <span className="text-white text-lg">Decentralized Tool Registry</span>
-                 </div>
-                 <div className="flex items-center space-x-3">
-                   <CheckCircleIcon className="w-6 h-6 text-purple-400" />
-                   <span className="text-white text-lg">Built-in Economic Incentives</span>
-                 </div>
-                 <div className="flex items-center space-x-3">
-                   <CheckCircleIcon className="w-6 h-6 text-pink-400" />
-                   <span className="text-white text-lg">MCP Protocol Compatible</span>
-                 </div>
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {stat.icon}
+              </div>
+              <div className="text-3xl font-display font-bold text-mcp-white mb-2 data-stream">
+                {stat.value}
+              </div>
+              <div className="text-mcp-silver font-medium">
+                {stat.label}
               </div>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+          ))}
+        </motion.div>
+      </section> */}
+
+      {/* Trust Crisis Section */}
+      <section id="about" className="py-24 relative">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="text-center mb-20"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.h2 
+              variants={fadeInUp}
+              className="text-5xl font-display font-bold text-mcp-white mb-6"
             >
-              <Card className="bg-gradient-to-br from-slate-900/80 to-purple-900/20 border-slate-700/50 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-white text-2xl">Architecture Overview</CardTitle>
-                                     <CardDescription className="text-gray-400">
-                     Built with modern decentralized technologies
-                   </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-4">
-                                         <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
-                       <div className="flex items-center space-x-3">
-                         <CpuChipIcon className="w-6 h-6 text-purple-400" />
-                         <span className="text-white">Decentralized Registry</span>
-                       </div>
-                       <Badge variant="secondary">On-Chain</Badge>
-                     </div>
-                     <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
-                       <div className="flex items-center space-x-3">
-                         <BoltIcon className="w-6 h-6 text-blue-400" />
-                         <span className="text-white">Tool Discovery</span>
-                       </div>
-                       <Badge variant="secondary">P2P Network</Badge>
-                     </div>
-                     <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
-                       <div className="flex items-center space-x-3">
-                         <LinkIcon className="w-6 h-6 text-green-400" />
-                         <span className="text-white">Agent Integration</span>
-                       </div>
-                       <Badge variant="secondary">MCP Protocol</Badge>
-                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+              The Trust Crisis in Autonomous AI
+            </motion.h2>
+            <motion.p 
+              variants={fadeInUp}
+              className="text-xl text-mcp-silver max-w-4xl mx-auto"
+            >
+              As AI agents become more autonomous, the stakes of unverifiable actions grow exponentially
+            </motion.p>
+          </motion.div>
+
+          {/* Three Pillars Layout */}
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {/* Pillar 1: Opaque Actions */}
+            <motion.div variants={fadeInUp} className="glass-card-hover rounded-2xl p-8 text-center group">
+              <div className="w-20 h-20 mx-auto mb-6 bg-red-500/10 rounded-full flex items-center justify-center group-hover:bg-red-500/20 transition-all duration-300">
+                <BlackBoxIcon className="w-10 h-10 text-red-400" />
+              </div>
+              <Badge className="mb-4 bg-red-500/20 text-red-300 border-red-500/30">
+                Critical Risk
+              </Badge>
+              <h3 className="text-2xl font-display font-bold text-mcp-white mb-4">
+                Opaque Actions
+              </h3>
+              <p className="text-mcp-silver leading-relaxed">
+                AI operations are unauditable black boxes. When your trading bot loses $50K, 
+                was it market volatility or a compromised algorithm?
+              </p>
             </motion.div>
-          </div>
+
+            {/* Pillar 2: Unvetted Tools */}
+            <motion.div variants={fadeInUp} className="glass-card-hover rounded-2xl p-8 text-center group">
+              <div className="w-20 h-20 mx-auto mb-6 bg-orange-500/10 rounded-full flex items-center justify-center group-hover:bg-orange-500/20 transition-all duration-300">
+                <CrackedShieldIcon className="w-10 h-10 text-orange-400" />
+              </div>
+              <Badge className="mb-4 bg-orange-500/20 text-orange-300 border-orange-500/30">
+                High Risk
+              </Badge>
+              <h3 className="text-2xl font-display font-bold text-mcp-white mb-4">
+                Unvetted Tools
+              </h3>
+              <p className="text-mcp-silver leading-relaxed">
+                External tools can be insecure or malicious. One compromised API integration 
+                can drain your entire treasury without a trace.
+              </p>
+            </motion.div>
+
+            {/* Pillar 3: MCPChain Solution */}
+            <motion.div variants={fadeInUp} className="glass-card-hover rounded-2xl p-8 text-center group pulse-glow">
+              <div className="w-20 h-20 mx-auto mb-6 bg-electric/10 rounded-full flex items-center justify-center group-hover:bg-electric/20 transition-all duration-300">
+                <GlowingKeyIcon className="w-10 h-10 text-electric" />
+              </div>
+              <Badge className="mb-4 bg-electric/20 text-electric border-electric/30">
+                Solution
+              </Badge>
+              <h3 className="text-2xl font-display font-bold text-mcp-white mb-4">
+                Verifiable Execution
+              </h3>
+              <p className="text-mcp-silver leading-relaxed">
+                MCPChain provides a universal verification protocol that makes every 
+                AI action transparent, auditable, and provably secure.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Central Vision Statement */}
+          <motion.div 
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="glass-card rounded-3xl p-12 text-center max-w-4xl mx-auto pulse-glow"
+          >
+            <h3 className="text-3xl font-display font-bold text-mcp-white mb-4">
+              The Vision: Trustless AI Infrastructure
+            </h3>
+            <p className="text-xl text-mcp-silver leading-relaxed">
+              Every AI action becomes a cryptographically verifiable transaction. 
+              Every tool interaction leaves an immutable audit trail. 
+              Trust through transparency, not promises.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Before/After Transformation Diagram */}
+      <section className="container mx-auto px-6 py-24 relative">
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <BeforeAfterDiagram />
         </motion.div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="container mx-auto px-6 py-24 bg-slate-900/20">
+      <section id="features" className="container mx-auto px-6 py-24 relative">
         <motion.div 
           className="max-w-7xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          initial="initial"
+          whileInView="animate"
           viewport={{ once: true }}
+          variants={staggerContainer}
         >
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-white mb-6">
-              Powerful Features
+          <motion.div variants={fadeInUp} className="text-center mb-16">
+            <h2 className="text-5xl font-display font-bold text-mcp-white mb-6">
+              The Foundation of Trusted AI
             </h2>
-                         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-               Everything you need to build, deploy, and manage AI tools in a decentralized environment
-             </p>
-          </div>
+            <p className="text-xl text-mcp-silver max-w-3xl mx-auto">
+              Three pillars that transform AI from risk to reliable infrastructure
+            </p>
+          </motion.div>
           
           <motion.div 
             className="grid lg:grid-cols-3 gap-8"
@@ -280,68 +364,287 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-slate-700 hover:border-purple-500/50 transition-all duration-300 h-full group hover:bg-slate-900/70">
+            <motion.div 
+              variants={fadeInUp}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card className="glass-card-hover h-full group">
                 <CardHeader>
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <ShieldCheckIcon className="w-8 h-8 text-white" />
-                  </div>
-                                     <CardTitle className="text-white text-2xl">Secure Registry</CardTitle>
-                   <CardDescription className="text-gray-400 text-base">
-                     Cryptographically verified tool registration
-                   </CardDescription>
-                 </CardHeader>
-                 <CardContent>
-                   <p className="text-gray-300 leading-relaxed">
-                     All AI tools are registered with cryptographic verification, ensuring authenticity 
-                     and preventing malicious modifications. Every tool interaction is recorded 
-                     immutably, creating a transparent audit trail.
-                   </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-slate-700 hover:border-blue-500/50 transition-all duration-300 h-full group hover:bg-slate-900/70">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <BoltIcon className="w-8 h-8 text-white" />
-                  </div>
-                                     <CardTitle className="text-white text-2xl">Economic Incentives</CardTitle>
-                   <CardDescription className="text-gray-400 text-base">
-                     Built-in reward mechanisms for participation
-                   </CardDescription>
-                 </CardHeader>
-                 <CardContent>
-                   <p className="text-gray-300 leading-relaxed">
-                     Tool operators and users are rewarded for contributing to the network. 
-                     Stake tokens to participate in governance, earn fees from tool usage, 
-                     and help secure the decentralized infrastructure.
-                   </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-slate-700 hover:border-green-500/50 transition-all duration-300 h-full group hover:bg-slate-900/70">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <ChartBarIcon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-white text-2xl">Usage Analytics</CardTitle>
-                  <CardDescription className="text-gray-400 text-base">
-                    Comprehensive tracking and metrics
+                  <motion.div 
+                    className="w-16 h-16 bg-gradient-to-br from-electric to-mcp-cyan-dark rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 pulse-glow"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <VerifiedShieldIcon className="w-8 h-8 text-mcp-navy" />
+                  </motion.div>
+                  <CardTitle className="text-mcp-white text-2xl font-display">The Verified Tool Marketplace</CardTitle>
+                  <CardDescription className="text-mcp-silver text-base">
+                    An on-chain directory where tool providers are economically staked
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                                     <p className="text-gray-300 leading-relaxed">
-                     Comprehensive tracking of tool usage, ratings, and performance metrics. 
-                     All data is publicly verifiable, providing transparency and trust 
-                     for the entire decentralized ecosystem.
-                   </p>
+                  <p className="text-mcp-silver leading-relaxed">
+                    Only high-quality, legitimate applications can connect with AI agents. Every tool 
+                    provider must stake tokens and undergo verification, ensuring a curated ecosystem 
+                    of trusted, battle-tested tools for autonomous systems.
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card className="glass-card-hover h-full group">
+                <CardHeader>
+                  <motion.div 
+                    className="w-16 h-16 bg-gradient-to-br from-electric to-mcp-cyan-dark rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 pulse-glow"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <LightningIcon className="w-8 h-8 text-mcp-navy" />
+                  </motion.div>
+                  <CardTitle className="text-mcp-white text-2xl font-display">Economic Security & Accountability</CardTitle>
+                  <CardDescription className="text-mcp-silver text-base">
+                    Financial bonds that guarantee reliable behavior
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-mcp-silver leading-relaxed">
+                    Tool providers post a financial bond on-chain. Malicious or faulty actions result 
+                    in slashing, creating a powerful economic incentive for reliability and trust. 
+                    This skin-in-the-game model ensures only serious, committed providers participate.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card className="glass-card-hover h-full group">
+                <CardHeader>
+                  <motion.div 
+                    className="w-16 h-16 bg-gradient-to-br from-electric to-mcp-cyan-dark rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 pulse-glow"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <AuditShieldIcon className="w-8 h-8 text-mcp-navy" />
+                  </motion.div>
+                  <CardTitle className="text-mcp-white text-2xl font-display">Cryptographic Proof-of-Execution</CardTitle>
+                  <CardDescription className="text-mcp-silver text-base">
+                    Immutable, non-repudiable records for compliance
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-mcp-silver leading-relaxed">
+                    Every agent action is logged on-chain with a cryptographic attestation, creating 
+                    an immutable, non-repudiable record for compliance, disputes, and forensic analysis. 
+                    Perfect for enterprise and institutional use cases requiring full auditability.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+          
+          {/* Ecosystem Diagram */}
+          <motion.div
+            className="mt-24"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-center mb-16">
+              <h3 className="text-4xl font-bold text-white mb-6">
+                Universal Ecosystem
+              </h3>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                MCPChain acts as the central hub connecting AI agents, blockchains, and tools in a unified ecosystem
+              </p>
+            </div>
+            <EcosystemDiagram />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Use Cases Section - Diverse Applications */}
+      <section className="container mx-auto px-6 py-24 relative">
+        <motion.div 
+          className="max-w-7xl mx-auto"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-20">
+            <h2 className="text-5xl font-display font-bold text-mcp-white mb-6">
+              {ecosystemConfig.title}
+            </h2>
+            <p className="text-xl text-mcp-silver max-w-4xl mx-auto">
+              {ecosystemConfig.subtitle}
+            </p>
+          </motion.div>
+          
+          {/* Use Cases Grid */}
+          <motion.div variants={staggerContainer} className="grid lg:grid-cols-2 gap-12 mb-20">
+            {/* Use Case 1: Verifiable Oracles */}
+            <motion.div
+              variants={fadeInUp}
+              className="group"
+            >
+              <Card className="glass-card-hover h-full group-hover:pulse-glow">
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-electric/20 to-mcp-cyan-dark/20 rounded-2xl flex items-center justify-center border border-electric/30 group-hover:scale-110 transition-transform duration-300 pulse-glow">
+                      <DataOracleIcon className="w-8 h-8 text-electric" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-display font-bold text-mcp-white mb-4">
+                        Verifiable Oracles
+                      </h3>
+                      <p className="text-mcp-silver leading-relaxed text-lg mb-6">
+                        Enable AI agents to fetch real-world data (prices, weather, sports scores) with 
+                        <strong className="text-electric"> cryptographic proof</strong> that the data came from a trusted, registered source.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Real-time Data</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Price Feeds</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Weather APIs</Badge>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Use Case 2: Secure DAO Management */}
+            <motion.div
+              variants={fadeInUp}
+              className="group"
+            >
+              <Card className="glass-card-hover h-full group-hover:pulse-glow">
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-electric/20 to-mcp-cyan-dark/20 rounded-2xl flex items-center justify-center border border-electric/30 group-hover:scale-110 transition-transform duration-300 pulse-glow">
+                      <GovernanceIcon className="w-8 h-8 text-electric" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-display font-bold text-mcp-white mb-4">
+                        Secure DAO Management
+                      </h3>
+                      <p className="text-mcp-silver leading-relaxed text-lg mb-6">
+                        Allow DAOs to use autonomous agents to execute passed proposals, manage treasuries, 
+                        and perform administrative tasks with a <strong className="text-electric">complete on-chain audit trail</strong>.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Treasury Management</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Proposal Execution</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Governance</Badge>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Use Case 3: Trustworthy Gaming & NFTs */}
+            <motion.div
+              variants={fadeInUp}
+              className="group"
+            >
+              <Card className="glass-card-hover h-full group-hover:pulse-glow">
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-electric/20 to-mcp-cyan-dark/20 rounded-2xl flex items-center justify-center border border-electric/30 group-hover:scale-110 transition-transform duration-300 pulse-glow">
+                      <GamingNFTIcon className="w-8 h-8 text-electric" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-display font-bold text-mcp-white mb-4">
+                        Trustworthy Gaming & NFTs
+                      </h3>
+                      <p className="text-mcp-silver leading-relaxed text-lg mb-6">
+                        Let agents perform in-game actions, manage NFT assets, and interact with metaverse economies 
+                        with <strong className="text-electric">proven integrity</strong>, preventing fraud and exploits.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">In-Game Actions</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">NFT Management</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Metaverse</Badge>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Use Case 4: Enterprise Automation */}
+            <motion.div
+              variants={fadeInUp}
+              className="group"
+            >
+              <Card className="glass-card-hover h-full group-hover:pulse-glow">
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-electric/20 to-mcp-cyan-dark/20 rounded-2xl flex items-center justify-center border border-electric/30 group-hover:scale-110 transition-transform duration-300 pulse-glow">
+                      <EnterpriseIcon className="w-8 h-8 text-electric" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-display font-bold text-mcp-white mb-4">
+                        Enterprise Automation
+                      </h3>
+                      <p className="text-mcp-silver leading-relaxed text-lg mb-6">
+                        Enable enterprise agents to automate workflows, handle compliance, and manage operations 
+                        with <strong className="text-electric">full regulatory auditability</strong> and transparency.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Workflow Automation</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Compliance</Badge>
+                        <Badge variant="outline" className="border-electric/30 text-electric bg-electric/5">Operations</Badge>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+
+          {/* Infrastructure Value Proposition */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="bg-gradient-to-r from-mcp-slate/50 to-electric/10 rounded-3xl p-12 border border-electric/30 glow-electric max-w-5xl mx-auto">
+              <h4 className="text-3xl font-display font-bold text-mcp-white mb-6">
+                Universal Infrastructure, Unlimited Applications
+              </h4>
+              <p className="text-xl text-mcp-silver leading-relaxed mb-8">
+                MCPChain isn't just for financial applications. We're building the <strong className="text-electric">foundational trust layer</strong> 
+                that enables verifiable AI agents across every industry, use case, and blockchain.
+              </p>
+              <div className="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <div className="text-4xl font-display font-bold text-electric mb-2">∞</div>
+                  <div className="text-mcp-silver">Unlimited Use Cases</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-display font-bold text-electric mb-2">🔗</div>
+                  <div className="text-mcp-silver">Cross-Chain Compatible</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-display font-bold text-electric mb-2">🏢</div>
+                  <div className="text-mcp-silver">Enterprise Ready</div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </section>
@@ -405,7 +708,7 @@ export default function Home() {
                    </div>
                    <p className="text-gray-300 ml-16">
                      Build comprehensive APIs and SDKs for AI agent integration. 
-                     Develop MCP protocol compatibility layer for seamless tool discovery and execution.
+                     Develop MCP compatibility layer for seamless tool discovery and execution.
                    </p>
                  </CardContent>
                </Card>
@@ -460,11 +763,11 @@ export default function Home() {
                   🚀 Coming Soon
                 </Badge>
                 <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
-                  The Future is Almost Here
+                  Ready to Build the Autonomous Economy?
                 </h2>
                                  <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                   We're putting the finishing touches on the most advanced decentralized AI tool registry. 
-                   Join our community to be the first to know when we launch!
+                   MCPChain is launching soon. Be among the first to deploy AI agents with enterprise-grade 
+                   security and verifiable execution. The future of autonomous systems starts here.
                  </p>
                 
                                  <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -506,7 +809,7 @@ export default function Home() {
               MCP<span className="text-purple-400">Chain</span>
             </div>
                          <div className="text-gray-400 text-sm">
-               © 2024 MCPChain. Building the future of decentralized AI coordination.
+               © 2025 MCPChain. Building the future of decentralized AI coordination.
              </div>
           </div>
         </div>
